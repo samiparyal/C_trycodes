@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int searchinsert(int nums[], int numsSize, int target);
+int main() 
+{
+    int nums[30], target, numsSize;
+    printf("Enter the size of array you want (<30):\t");
+    scanf("%d", &numsSize);
+    printf("Enter the data for the array:\n");
+    for(int i=0; i<numsSize; i++)
+    {
+        scanf("%d", &nums[i]);
+    }
+    printf("Enter the target to find:\t");
+    scanf("%d", &target);
+    printf("%d", searchinsert(nums, numsSize, target)); 
+}   
+int searchinsert(int nums[], int numsSize, int target){
+     int temp;
+     for (int i=0; i<numsSize; i++){
+            if(nums[i]==target){
+               return i; 
+               break;}
+            else { 
+                if(nums[i]>nums[i+1])
+                {
+                    temp=nums[i];
+                    nums[i]=nums[i+1];
+                    nums[i+1]=temp;
+                    
+                 }
+               if(target>nums[i] && target<nums[i+1])
+                    {
+                        return i+1;
+                    }
+            }    
+        }
+}
